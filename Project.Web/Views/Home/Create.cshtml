@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Add Item";
+}
+ 
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Başlık</label>
+        <div class="col-sm-4">
+            <input type="text" name="Title" class="form-control" placeholder="Başlık">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Açıklama</label>
+        <div class="col-sm-4">
+            <input type="text" name="Description" class="form-control" placeholder="Açıklama">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Tarih</label>
+        <div class="col-sm-4">
+            <input size="16" name="InsertDateTime" type="text" value="@DateTime.Now.ToString("dd.MM.yyyy HH:mm")" class="form_datetime form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-4">
+            <button type="submit" class="btn btn-success">Kayıt</button>
+        </div>
+    </div>
+}
+@section Scripts
+{
+    <script type="text/javascript">
+        $(".form_datetime").datetimepicker({ format: 'dd.mm.yyyy HH:ii', autoclose: true, startDate: '+1d' });
+    </script>
+
+}

@@ -1,0 +1,83 @@
+﻿ 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Project.Web</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="~/font-awesome/css/all.css" rel="stylesheet" media="screen">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    @*<link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">*@
+    <link href="~/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "58737d89-bfff-4d1a-8cde-4b141088e9ca",
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Project.Web</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Project.Web
+        </div>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="~/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="~/lib/notify/bootstrap-notify.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="~/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+
+    <script>
+    @if (TempData.Get<UiMessage>("Notification") != null)
+    { 
+            var noty = TempData.Get<UiMessage>("Notification");
+            var type = noty.Type == NotyType.error ? "danger" : noty.Type.ToString();
+        <text>
+            console.log("asdfsd");
+            $.notify({
+                message: '@noty.Message'
+            },{
+                type: '@type'
+            });
+        </text>
+
+
+    }
+    </script>
+@RenderSection("Scripts", required: false)
+</body>
+</html>
